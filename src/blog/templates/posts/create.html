@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+        <section id="edit-post-home">
+            <section class="wrapper">   
+                {% include "web/includes/header.html" %}
+                <section class="spotlight">
+                    <h3>{{title}}</h3>
+                    <form action="" method="post" enctype="multipart/form-data" class="ajax redirect">
+                        {% csrf_token %}
+                            <div class="form-field">
+                                
+                                <label for="{{form.title.id_for_label}}" class="subheads" >
+                                    {{form.title.label}}
+                                    
+                                </label>
+                                {{form.title}}
+                                {% comment %} <input type="text" name="title" class="input" maxlength="255" required id="id_title"> {% endcomment %}
+                            </div>
+                            <div class="form-field">
+                                <label class="subheads">
+                                    {{form.description.label}}
+                                </label>
+                                <div class="description">
+                                    {{form.description}}
+                                    {% comment %} <div class="editor" data-field-id="id_description" style="display: inline-block;">
+                                        <textarea cols="40" id="id_description" name="description" rows="10" required data-processed="0" >Hello</textarea>
+                                    </div> {% endcomment %}
+                                </div>
+                            </div>
+                            <div class="form-field">
+                                <label class="subheads" for="id_short_description.id_for_label">
+                                    {{form.short_description.label}}
+                                </label>
+                                {{form.short_description}}
+                                {% comment %} <textarea name="short_description" cols="40" rows="10" class="input" required id="id_short_description">
+                                Hello</textarea> {% endcomment %}
+                            </div>
+                            <div class="form-field">
+                                <label class="subheads" for="{{form.short_description.id_for_label}}">
+                                    {{form.tags.label}}
+                                </label>
+                                {% comment %} <input type="text" name="tags"  class="input" required id="id_tags"> {% endcomment %}
+                                 {{form.tags}}
+                            </div>
+                            <div class="form-field">
+                                <label for="{{form.time_to_read.id_for_label}}" class="subheads" >
+                                    {{form.time_to_read.label}}
+                                </label>
+                                {{form.time_to_read}}
+                                {% comment %} <input type="text" name="time_to_read" value="8 min" class="input" maxlength="128" required id="id_time_to_read"> {% endcomment %}
+                            </div>
+                            <div class="form-field">
+                                <label for="{{form.featured_image.id_for_label}}" class="subheads" >
+                                    {{form.featured_image.label}}
+                                </label>
+                                {{form.featured_image}}
+                                {% comment %} <input type="file" name="featured_image" accept="image/*" required id="id_featured_image"> {% endcomment %}
+                            </div>
+                            <div class="form-field"></div>
+                                <label class="checkbox">
+                                    {{form.is_draft}}
+                                    {{form.is_draft.label}}
+                                    {% comment %} <input type="checkbox" name="is_draft" id="id_is_draft"> {% endcomment %}
+                                </label>
+                            </div>
+                            <div class="form-field">
+                                <input type="submit" value="Submit" />
+                            </div>
+                    </form>
+                    {{form.media}}
+                </section>
+            </section>
+        </section>
+        <!-- <script src="{/static/ckeditor/ckeditor-init.js" data-ckeditor-basepath="/static/ckeditor/ckeditor/" id="ckeditor-init-script"></script> -->
+        <!-- <script src="./js/ckeditor.js"></script> -->
+        {% comment %} <script>ClassicEditor
+            .create( document.querySelector( '.editor' ), {
+                
+                licenseKey: '',
+                
+                
+                
+            } )
+            .then( editor => {
+                window.editor = editor;
+        
+                
+                
+                
+            } )
+            .catch( error => {
+                console.error( 'Oops, something went wrong!' );
+                console.error( 'Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:' );
+                console.warn( 'Build id: fbn1rnj89y5k-nohdljl880ze' );
+                console.error( error );
+            } );
+        </script> {% endcomment %}
+
+{% endblock %}
